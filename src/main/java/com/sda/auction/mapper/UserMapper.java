@@ -14,6 +14,7 @@ public class UserMapper {
         user.setLastName(userDto.getLastName());
         user.setPassword(userDto.getPassword());
         user.setEmail(userDto.getEmail());
+        user.setDateOfBirth(userDto.getDateOfBirth());
 
         // returns the mapped user
         return user;
