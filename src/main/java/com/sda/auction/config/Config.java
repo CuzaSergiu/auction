@@ -16,6 +16,7 @@ public class Config {
         resolver.setPrefix("classpath:/templates/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML");
+        // cache to false will not save data
         resolver.setCacheable(false);
         return resolver;
     }
