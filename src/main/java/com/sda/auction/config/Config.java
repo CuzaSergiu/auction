@@ -10,6 +10,7 @@ public class Config {
 
 
     // this Bean will set the path to our html from templates
+    // View Resolver
     @Bean
     public ITemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
