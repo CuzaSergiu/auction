@@ -4,6 +4,8 @@ import com.sda.auction.dto.UserDto;
 import com.sda.auction.model.User;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class UserMapper {
 
@@ -14,7 +16,7 @@ public class UserMapper {
         user.setLastName(userDto.getLastName());
         user.setPassword(userDto.getPassword());
         user.setEmail(userDto.getEmail());
-        user.setDateOfBirth(userDto.getDateOfBirth());
+        user.setDateOfBirth(LocalDate.parse(userDto.getDateOfBirth()));
 
         // returns the mapped user
         return user;

@@ -3,7 +3,7 @@ package com.sda.auction.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -17,7 +17,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     // == relationships ==
     @ManyToOne(cascade = CascadeType.ALL)
