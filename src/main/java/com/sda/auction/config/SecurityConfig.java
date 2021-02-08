@@ -14,7 +14,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // == fields ==
-    private UserDetailsSecurityService userDetailsSecurityService;
+    private final UserDetailsSecurityService userDetailsSecurityService;
 
     // == constructor ==
     @Autowired

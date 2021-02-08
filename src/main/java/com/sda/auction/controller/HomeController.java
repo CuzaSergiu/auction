@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
     // == fields ==
-    private UserService userService;
-    private UserDtoValidator userDtoValidator;
+    private final UserService userService;
+    private final UserDtoValidator userDtoValidator;
 
     // == constructor ==
     @Autowired

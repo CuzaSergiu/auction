@@ -18,10 +18,10 @@ import java.util.Optional;
 public class UserService {
 
     // == fields ==
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private UserMapper userMapper;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final UserMapper userMapper;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // == constructor ==
     @Autowired
@@ -37,7 +37,7 @@ public class UserService {
         User user = userMapper.map(userDto);
         assignRolesTo(user, userDto); // method to assign roles
         encodePasswordFor(user); // method to encode pass
-        userRepository.save(user); // will save the user
+        userRepository.save(user);
     }
 
     // == private methods ==

@@ -14,7 +14,7 @@ import java.util.Optional;
 public class UserDtoValidator {
 
     // == fields ==
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     // == constructor ==
     @Autowired

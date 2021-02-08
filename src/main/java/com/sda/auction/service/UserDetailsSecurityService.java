@@ -18,7 +18,7 @@ import java.util.Set;
 public class UserDetailsSecurityService implements UserDetailsService {
 
     // == fields ==
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     // == constructor ==
     @Autowired
