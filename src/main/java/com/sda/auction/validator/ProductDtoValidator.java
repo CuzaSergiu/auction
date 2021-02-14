@@ -72,12 +72,10 @@ public class ProductDtoValidator {
     }
 
     private boolean validateStartBidingTime(String startBiddingTime, BindingResult bindingResult) {
-
         return isDateTimeFormatValid("startBiddingTime", startBiddingTime, bindingResult);
     }
 
     private boolean validateEndBidingTime(String endBiddingTime, BindingResult bindingResult) {
-
         return isDateTimeFormatValid("endBiddingTime", endBiddingTime, bindingResult);
     }
 
