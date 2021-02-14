@@ -125,6 +125,9 @@
 
             <label class="form-label" for="minimumBidStep">Minimum Bid Step</label>
             <input type="number" id="minimumBidStep" class="form-control" th:field="*{minimumBidStep}"/>
+            <p class="error-message"
+               th:each="error: ${#fields.errors('minimumBidStep')}"
+               th:text="${error}"></p>
 
         </div>
 
@@ -133,6 +136,9 @@
 
             <label class="form-label" for="startBiddingTime">Start Bidding Time</label>
             <input type="datetime-local" id="startBiddingTime" class="form-control" th:field="*{startBiddingTime}"/>
+            <p class="error-message"
+               th:each="error: ${#fields.errors('startBiddingTime')}"
+               th:text="${error}"></p>
 
         </div>
 
@@ -141,7 +147,9 @@
 
             <label class="form-label" for="endBiddingTime">End Bidding Time</label>
             <input type="datetime-local" id="endBiddingTime" class="form-control" th:field="*{endBiddingTime}"/>
-
+            <p class="error-message"
+               th:each="error: ${#fields.errors('endBiddingTime')}"
+               th:text="${error}"></p>
 
         </div>
 

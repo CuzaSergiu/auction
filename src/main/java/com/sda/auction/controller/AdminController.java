@@ -1,6 +1,7 @@
 package com.sda.auction.controller;
 
 import com.sda.auction.dto.ProductDto;
+import com.sda.auction.service.ProductService;
 import com.sda.auction.validator.ProductDtoValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,13 @@ public class AdminController {
 
     // == fields ==
     private final ProductDtoValidator productDtoValidator;
+    private final ProductService productService;
 
     // == constructor ==
     @Autowired
-    public AdminController(ProductDtoValidator productDtoValidator) {
+    public AdminController(ProductDtoValidator productDtoValidator, ProductService productService) {
         this.productDtoValidator = productDtoValidator;
+        this.productService = productService;
     }
 
     // == methods ==
@@ -38,6 +41,7 @@ public class AdminController {
             model.addAttribute("productDto", productDto);
             return "addProduct";
         }
+        productService.addProduct(productDto);
         return "redirect:/addProduct";
     }
 
