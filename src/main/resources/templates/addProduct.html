@@ -3,6 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Add Product Page</title>
     <link rel="stylesheet" href="/aroma-template/vendors/bootstrap/bootstrap.min.css">
@@ -15,7 +16,9 @@
 
     <link rel="stylesheet" href="/aroma-template/css/style.css">
     <link rel="stylesheet" href="css/custom.css">
+
 </head>
+
 <body>
 <!--================ Start Header Menu Area =================-->
 <header class="header_area">
@@ -64,52 +67,82 @@
 
     <form th:action="@{/addProduct}" method="post" th:object="${productDto}">
 
-        <!--Name-->
+        <!-- Name -->
         <div class="form-outline mb-4">
-            <input type="text" id="name" class="form-control" th:field="*{name}"/>
+
             <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" class="form-control" th:field="*{name}"/>
+
+            <p class="error-message"
+               th:each="error: ${#fields.errors('name')}"
+               th:text="${error}"></p>
+
         </div>
 
-        <!--Category-->
+        <!-- Category -->
         <div class="form-outline mb-4">
-            <input type="text" id="category" class="form-control" th:field="*{category}"/>
-            <label class="form-label" for="category">Category</label>
-            <!--            <p class="error-message"-->
-            <!--               th:each="error: ${#fields.errors('email')}"-->
-            <!--               th:text="${error}"></p>-->
+
+            <option value="">Please choose...</option>
+            <select id="category" class="form-control" th:field="*{category}">
+
+                <option th:each="category : ${T(com.sda.auction.model.enums.ProductCategory).values()}"
+                        th:value="${category}"
+                        th:text="${#strings.toLowerCase(category)}">
+                </option>
+
+            </select>
+
+            <p class="error-message"
+               th:each="error: ${#fields.errors('category')}"
+               th:text="${error}"></p>
+
         </div>
 
-        <!--Description-->
+        <!-- Description -->
         <div class="form-outline mb-4">
             <div class="form-outline">
-                <textarea type="text" id="description" class="form-control" th:field="*{description}"/>
                 <label class="form-label" for="description">Description</label>
+                <textarea type="text" id="description" class="form-control" th:field="*{description}"/>
+                <p class="error-message"
+                   th:each="error: ${#fields.errors('description')}"
+                   th:text="${error}"></p>
             </div>
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
+
+            <label class="form-label" for="startingBid">Starting Bid</label>
             <input type="number" id="startingBid" class="form-control" th:field="*{startingBid}"/>
-            <label class="form-label" for="startingBid">Email address</label>
+            <p class="error-message"
+               th:each="error: ${#fields.errors('startingBid')}"
+               th:text="${error}"></p>
 
         </div>
 
         <!-- Minimum Bid Step input -->
         <div class="form-outline mb-4">
-            <input type="number" id="minimumBidStep" class="form-control" th:field="*{minimumBidStep}"/>
+
             <label class="form-label" for="minimumBidStep">Minimum Bid Step</label>
+            <input type="number" id="minimumBidStep" class="form-control" th:field="*{minimumBidStep}"/>
+
         </div>
 
-        <!-- Start Bidding TIme -->
+        <!-- Start Bidding Time input -->
         <div class="form-outline mb-4">
-            <input type="datetime" id="startBiddingTime" class="form-control" th:field="*{startBiddingTime}"/>
+
             <label class="form-label" for="startBiddingTime">Start Bidding Time</label>
+            <input type="datetime-local" id="startBiddingTime" class="form-control" th:field="*{startBiddingTime}"/>
+
         </div>
 
-        <!-- End Bidding TIme -->
+        <!-- End Bidding Time input -->
         <div class="form-outline mb-4">
-            <input type="datetime" id="endBiddingTime" class="form-control" th:field="*{endBiddingTime}"/>
+
             <label class="form-label" for="endBiddingTime">End Bidding Time</label>
+            <input type="datetime-local" id="endBiddingTime" class="form-control" th:field="*{endBiddingTime}"/>
+
+
         </div>
 
         <!-- Submit button -->

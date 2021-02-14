@@ -9,11 +9,10 @@ public class ProductDto {
     private String name;
     private String description;
     private String category;
-    private Double startingBid;
-    private Double minimumBidStep;
+    private String startingBid;
+    private String minimumBidStep;
     private String startBiddingTime;
     private String endBiddingTime;
-
 
 
 }
