@@ -65,7 +65,7 @@
 
 <div class="mainContainer">
 
-    <form th:action="@{/addProduct}" method="post" th:object="${productDto}">
+    <form th:action="@{/addProduct}" method="post" th:object="${productDto}" enctype="multipart/form-data">
 
         <!-- Name -->
         <div class="form-outline mb-4">
@@ -112,10 +112,10 @@
         <!-- Email input -->
         <div class="form-outline mb-4">
 
-            <label class="form-label" for="startingBid">Starting Bid</label>
-            <input type="number" id="startingBid" class="form-control" th:field="*{startingBid}" th:errorclass="form-field-error"/>
+            <label class="form-label" for="startingPrice">Starting Bid</label>
+            <input type="number" id="startingPrice" class="form-control" th:field="*{startingPrice}" th:errorclass="form-field-error"/>
             <p class="error-message"
-               th:each="error: ${#fields.errors('startingBid')}"
+               th:each="error: ${#fields.errors('startingPrice')}"
                th:text="${error}"></p>
 
         </div>
@@ -150,6 +150,14 @@
             <p class="error-message"
                th:each="error: ${#fields.errors('endBiddingTime')}"
                th:text="${error}"></p>
+
+        </div>
+
+        <!-- Image input -->
+        <div class="form-outline mb-4">
+
+            <label class="form-label" for="image">Image</label>
+            <input type="file" id="image" name="image" class="form-control" />
 
         </div>
 

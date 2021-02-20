@@ -48,7 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void globalConfig(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userDetailsSecurityService)
                 .passwordEncoder(bCryptPasswordEncoder());
-
     }
 
     @Bean

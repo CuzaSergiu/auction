@@ -18,7 +18,7 @@ public class ProductDtoValidator {
         validateName(productDto.getName(), bindingResult);
         validateDescription(productDto.getDescription(), bindingResult);
         validateCategory(productDto.getCategory(), bindingResult);
-        validateStartingBid(productDto.getStartingBid(), bindingResult);
+        validateStartingBid(productDto.getStartingPrice(), bindingResult);
         validateMinimumBidStep(productDto.getMinimumBidStep(), bindingResult);
 
         boolean isStartBiddingTimeValid = validateStartBidingTime(productDto.getStartBiddingTime(), bindingResult);
@@ -52,7 +52,7 @@ public class ProductDtoValidator {
     }
 
     private void validateStartingBid(String startingBid, BindingResult bindingResult) {
-        validateFieldAsPositiveInteger("startingBid", startingBid, bindingResult);
+        validateFieldAsPositiveInteger("startingPrice", startingBid, bindingResult);
     }
 
     private void validateMinimumBidStep(String minimumBidStep, BindingResult bindingResult) {
