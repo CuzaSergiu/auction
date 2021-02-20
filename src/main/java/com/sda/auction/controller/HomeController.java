@@ -31,15 +31,17 @@ public class HomeController {
         model.addAttribute("productDtoList", productDtoList);
         return "home";
     }
-
+    // todo - cum putem identifica in controler produsul pentru care s-a dat click pe pagina web
     @GetMapping("/viewProduct")
     public String getViewProduct(Model model) {
+
         ProductDto productDto = new ProductDto();
         productDto.setName("Flamingo");
         productDto.setDescription("daadadadada");
         productDto.setCategory("Pisici");
         productDto.setStartingPrice("23");
         model.addAttribute("product", productDto);
+
         return "viewProduct";
     }
 }
