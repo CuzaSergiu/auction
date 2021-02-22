@@ -7,6 +7,10 @@ select option {
     text-transform: capitalize;
 }
 
+.form-field-error {
+    border: 1px solid red;
+}
+
 .error-message {
     margin: 1px;
     padding: 6px;
@@ -16,27 +20,44 @@ select option {
     border: 1px solid red;
 }
 
-.form-field-error {
-    border: 1px solid red;
+.error-message-product {
+    background: #ff726f !important;
+    color: white;
+    padding: 10px !important;
+    border-radius: 6px !important;
+    position: relative;
+    display: inline-block !important;
+    box-shadow: 1px 1px 1px #aaaaaa;
+    margin-top: 5px;
 }
 
-.img-fluid.main-photo{
+.error-message-product:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ff726f;
+    position: absolute;
+    top: -10px;
+}
+
+.img-fluid.main-photo {
     align-content: center;
     max-width: 400px;
 }
 
 .product-price-btn button, input.bid-button {
-    margin: 0 auto;
     display: inline-block;
-    height: 50px;
-    width: 176px;
+    height: 40px;
+    width: 170px;
     margin: 0 40px 0 16px;
     box-sizing: border-box;
     border: transparent;
     border-radius: 60px;
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: #ffffff;
@@ -44,6 +65,21 @@ select option {
     cursor: pointer;
     outline: none;
 }
+
 .product-price-btn button:hover, input.bid-button {
-    background-color: #79b0a1;
+    background-color: #007bff;
+}
+
+.description-box {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

@@ -29,7 +29,7 @@ public class AdminController {
         this.productService = productService;
     }
 
-    // == methods ==
+    // == mapping methods ==
     @GetMapping("/addProduct")
     public String getAddProduct(Model model) {
         log.info("getAddProduct called");

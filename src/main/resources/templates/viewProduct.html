@@ -81,7 +81,7 @@
                             <span th:text="': $'+${product.startingPrice}"></span>
                         </a></li>
                     </ul>
-                    <p th:text="${product.description}"></p>
+                    <p class="description-box" th:text="${product.description}"></p>
 
                     <!--                    <p class="error-message"-->
                     <!--                       th:each="error: ${#fields.errors('generic')}"-->
@@ -94,7 +94,7 @@
                                    th:field="*{value}">
                             <input class="bid-button" type="submit" value="Place Bid">
 
-                            <p class="error-message"
+                            <p class="error-message-product"
                                th:each="error: ${#fields.errors('value')}"
                                th:text="${error}"></p>
 
