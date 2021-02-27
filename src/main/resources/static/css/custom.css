@@ -42,11 +42,6 @@ select option {
     top: -10px;
 }
 
-.img-fluid.main-photo {
-    align-content: center;
-    max-width: 400px;
-}
-
 .product-price-btn button, input.bid-button {
     display: inline-block;
     height: 40px;
