@@ -39,15 +39,15 @@
 
                         <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
 
-                        <li class="nav-item" sec:authorize="hasRole('PARTICIPANT')"><a href="/myBids" class="nav-link">My
-                            Bids</a></li>
+                        <li class="nav-item" sec:authorize="hasRole('PARTICIPANT')">
+                            <a href="/myBids" class="nav-link">My Bids</a></li>
 
-                        <li class="nav-item active" sec:authorize="hasRole('ADMIN')"><a href="/addProduct"
-                                                                                        class="nav-link">Add Product</a>
+                        <li class="nav-item active" sec:authorize="hasRole('ADMIN')">
+                            <a href="/addProduct" class="nav-link">Add Product</a>
                         </li>
 
-                        <li class="nav-item" sec:authorize="isAnonymous()"><a class="nav-link"
-                                                                              href="/register">Register</a></li>
+                        <li class="nav-item" sec:authorize="isAnonymous()">
+                            <a class="nav-link" href="/register">Register</a></li>
 
                     </ul>
 

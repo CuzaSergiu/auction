@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/addProduct").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().loginPage("/login").failureForwardUrl("/login")
                 .defaultSuccessUrl("/home") // will redirect to home page after login
                 .and()
                 .logout()

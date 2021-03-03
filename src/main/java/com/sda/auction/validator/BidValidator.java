@@ -39,6 +39,7 @@ public class BidValidator {
     // == private methods ==
     private void validateBidValue(BidDto bidDto, BindingResult bindingResult, Product product) {
 
+        // if the user input not number will throw this error
         if (isBidValueNotNumber(bidDto)) {
             bindingResult.addError(new FieldError("bidDto", "value", "This field should be a number."));
             return;
@@ -71,9 +72,10 @@ public class BidValidator {
     private Optional<Bid> getMaxBid(Product product) {
         return product.getBidList() // gets the BidList
                 .stream() // created stream with max method
-                .max(Comparator.comparing(Bid::getValue));
+                .max(Comparator.comparing(Bid::getValue)); // will compare each bid and returns the maximum value
     }
 
+    // validate input so the user always introduces numbers
     private boolean isBidValueNotNumber(BidDto value) {
         try {
             Integer.parseInt(value.getValue());
