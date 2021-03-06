@@ -1,15 +1,18 @@
 /* ========================== LOGIN PAGE ========================== */
 /* BASIC */
 html {
-    background-color: #fff;
+    background-color: #3FB8AF;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Arial", sans-serif;
+    color: #007bff;
     height: 100vh;
-    background-image: url('../images/background-image.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url('../images/login-background.jpg');
+    background-repeat: no-repeat,repeat;
+    background-position: inherit;
+    max-height: 100%;
+    max-width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,7 +20,7 @@ body {
 }
 
 a {
-    color: #92badd;
+    color: #007bff;
     display: inline-block;
     text-decoration: none;
     font-weight: 400;
@@ -47,15 +50,15 @@ h2 {
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #fff;
+    background: rgba(0, 0, 0, .5);
     padding: 30px;
     width: 90%;
     max-width: 550px;
     position: relative;
-    padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
     text-align: center;
+    color: #007bff;
     font-weight: 500 !important;
 }
 
@@ -81,7 +84,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: #56baed;
+    background-color: #007bff;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -115,16 +118,16 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
 }
 
 input[type=text], input[type=password] {
-    background-color: #f6f6f6;
-    color: #0d0d0d;
+    background-color: white;
+    color: black;
     padding: 15px 32px;
     text-align: initial;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
-    margin: 5px;
+    font-size: 15px;
+    margin: 3px;
     width: 85%;
-    border: 1px solid #56baed;
+    border: 1px solid #74a9f5;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
@@ -140,25 +143,22 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .password-show {
-    position: absolute;
-    top: 95px;
-    right: 50px;
+    position: inherit;
     font-size: larger;
     cursor: pointer;
     color: #56baed;
 }
 
 .user-show {
-    position: absolute;
-    top: 25px;
-    right: 50px;
+    position: inherit;
     font-size: larger;
     cursor: pointer;
     color: #56baed;
 }
 
+/*text color from inputs*/
 input[type=text]::placeholder, input[type=password]::placeholder {
-    color: #cccccc;
+    color: #007bff;
 }
 
 /* ANIMATIONS */
@@ -288,7 +288,7 @@ input[type=text]::placeholder, input[type=password]::placeholder {
 }
 
 .underlineHover:hover {
-  color: #007bff;
+    /*color: #007bff;*/
 }
 
 .underlineHover:hover:after {
@@ -301,7 +301,7 @@ input[type=text]::placeholder, input[type=password]::placeholder {
 }
 
 #icon {
-    width: 60%;
+    width: 20%;
 }
 
 .formContent i {
