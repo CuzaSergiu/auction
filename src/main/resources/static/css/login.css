@@ -8,15 +8,15 @@ body {
     font-family: "Arial", sans-serif;
     color: #007bff;
     height: 100vh;
-    background-image: url('../images/login-background.jpg');
-    background-repeat: no-repeat,repeat;
-    background-position: inherit;
+    background-image: url('../images/amazon-alexa-event-sept-2019.jpg');
+    background-repeat: no-repeat, repeat;
+    background-position: center;
     max-height: 100%;
     max-width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: contain;
 }
 
 a {
@@ -65,7 +65,7 @@ h2 {
 #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
-    color: #92badd;
+    color: #017bff;
     padding: 25px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
