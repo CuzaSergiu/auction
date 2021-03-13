@@ -62,6 +62,10 @@ public class ProductService {
         return Optional.of(productDto); // return an optional of productDto
     }
 
+    public List<ProductDto> search(String keyword, String authenticatedUserEmail) {
+        List<Product> searchProducts = productRepository.search(keyword);
+        return productMapper.map(searchProducts, authenticatedUserEmail);
+    }
 
 
     // == private methods ==
@@ -73,7 +77,6 @@ public class ProductService {
             product.setSeller(user); // we set the user to the seller
         }
     }
-
 
 
 }

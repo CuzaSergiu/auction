@@ -195,6 +195,8 @@ figure {
 img {
     vertical-align: middle;
     border-style: none
+    height: auto;
+    width: 60px;
 }
 
 svg {
@@ -7767,7 +7769,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .ml-auto, .mx-auto {
-    margin-left: auto !important
+    margin-left: inherit !important
 }
 
 @media (min-width: 576px) {

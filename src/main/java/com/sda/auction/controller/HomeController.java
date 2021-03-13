@@ -10,6 +10,7 @@ import com.sda.auction.validator.BidValidator;
 import com.sda.auction.validator.GenericValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,6 +77,20 @@ public class HomeController {
 
         log.info("Product viewed");
         return "viewProduct";
+    }
+
+    @GetMapping("/search")
+    public String searchProduct(Model model, @Param("keyword") String keyword, Authentication authentication) {
+
+        List<ProductDto> searchedProductDtoList = productService.search(keyword, authentication.getName());
+        UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
+
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("searchResult", searchedProductDtoList);
+        model.addAttribute("userHeaderDto", userHeaderDto);
+
+        log.info("searchProduct called");
+        return "searchResult";
     }
 
     @PostMapping("/viewProduct/{productId}")
