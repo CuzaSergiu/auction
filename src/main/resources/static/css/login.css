@@ -312,3 +312,13 @@ input[type=text]::placeholder, input[type=password]::placeholder {
 .formContent a, a:hover {
     color: #333
 }
+
+/*Logo*/
+.logo_h {
+    width: 55px !important;
+    height: 60px !important;
+    margin-left: -14px !important;
+}
+
+
+/*Video*/

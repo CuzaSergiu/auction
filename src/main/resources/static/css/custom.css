@@ -5,7 +5,7 @@
     box-shadow: 0px 6px 24px 3px rgb(0 123 255);
 }
 
-.header_area{
+.header_area {
 
 }
 
@@ -110,9 +110,12 @@ select option {
 
 /*LOGO*/
 .logo {
+}
+
+.logo_h {
     width: 55px !important;
-    height: auto !important;
-    margin-left: 386px !important;
+    height: 60px !important;
+    margin-left: -14px !important;
 }
 
 .ml-auto.menu {
@@ -137,6 +140,19 @@ select option {
     padding-bottom: 40px;
     margin: 0 auto;
     background-color: #e9ebee;
+}
+
+/*Welcome message*/
+#welcome {
+    padding-left: 150px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px #21528a;
+    background-color: #5689c1;
+    border: 1px solid rgba(0, 0, 0, .125);
+    box-shadow: 0px 2px 20px 2px;
+    text-decoration-line: underline;
 }
 
 /*Back to top button*/

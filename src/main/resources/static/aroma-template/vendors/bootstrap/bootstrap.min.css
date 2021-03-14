@@ -196,7 +196,7 @@ img {
     vertical-align: middle;
     border-style: none
     height: auto;
-    width: 60px;
+    width: inherit;
 }
 
 svg {
