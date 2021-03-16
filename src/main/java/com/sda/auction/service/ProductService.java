@@ -67,6 +67,16 @@ public class ProductService {
         return productMapper.map(searchProducts, authenticatedUserEmail);
     }
 
+    public List<ProductDto> getActiveBiddingList(String authenticatedUserEmail) {
+        List<Product> productList = productRepository.findAllActiveByBidder(authenticatedUserEmail, LocalDateTime.now());
+        return productMapper.map(productList, authenticatedUserEmail);
+    }
+
+    public List<ProductDto> getExpiredAndAssignedList(String authenticatedUserEmail) {
+        List<Product> productList = productRepository.findAllExpiredAndAssigned(authenticatedUserEmail, LocalDateTime.now());
+        return productMapper.map(productList, authenticatedUserEmail);
+    }
+
 
     // == private methods ==
     private void assignSeller(String loggedUserEmail, Product product) {
@@ -77,15 +87,4 @@ public class ProductService {
             product.setSeller(user); // we set the user to the seller
         }
     }
-
-    public List<ProductDto> getActiveBiddingList(String authenticatedUserEmail) {
-        List<Product> productList = productRepository.findAllActiveByBidder(authenticatedUserEmail,LocalDateTime.now());
-        return productMapper.map(productList,authenticatedUserEmail);
-    }
-
-    public List<ProductDto> getExpiredAndAssignedList(String authenticatedUserEmail) {
-        List<Product> productList = productRepository.findAllExpiredAndAssigned(authenticatedUserEmail, LocalDateTime.now());
-        return productMapper.map(productList, authenticatedUserEmail);
-    }
-
 }

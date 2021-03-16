@@ -101,7 +101,8 @@
 
                     <div class="product_count"
                          th:if="${product.userMaximumBid != product.currentPrice && !product.winnerAssigned}">
-                        <form th:action="@{/viewProduct/{id}(id=${product.id})}" method="post" th:object="${bidDto}">
+                        <form th:action="@{/viewProduct/{id}(id=${product.id})}" method="post" th:object="${bidDto}"
+                              sec:authorize="hasRole('PARTICIPANT')">
                             <label for="qty">Your Bid value:</label>
                             <input type="text" name="qty" id="qty" size="2" maxlength="12" class="input-text qty"
                                    th:field="*{value}">
@@ -114,7 +115,8 @@
                         </form>
                     </div>
 
-                    <div class="product_count" th:if="${product.userMaximumBid == product.currentPrice && !product.winnerAssigned}">
+                    <div class="product_count"
+                         th:if="${product.userMaximumBid == product.currentPrice && !product.winnerAssigned}">
                         <p>You are currently winning the auction for this product !!!</p>
                     </div>
 

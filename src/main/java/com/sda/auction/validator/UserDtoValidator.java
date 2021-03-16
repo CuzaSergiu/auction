@@ -23,7 +23,7 @@ public class UserDtoValidator {
     }
 
     // == public methods ==
-    //this method will validate the data
+    //this method will validate the data and checks if the email is already registered
     public void validate(UserDto userDto, BindingResult bindingResult) {
         // will check if the email already exist
         Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());

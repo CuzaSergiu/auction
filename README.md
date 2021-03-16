@@ -5,11 +5,11 @@ and participants can register and bid for each item.
 
 ### Backend technologies :
 
-###### Java SE, Spring Framework
+###### Java, Spring MVC, Spring Security, Spring boot, Spring Data Jpa, Maven
 
 ### Frontend technologies :
 
-###### HTML, CSS, Thymeleaf
+###### HTML, CSS, Thymeleaf, Bootstrap
 
 ### Database :
 
