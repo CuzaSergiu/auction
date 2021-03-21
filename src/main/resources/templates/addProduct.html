@@ -69,6 +69,13 @@
 
     <form th:action="@{/addProduct}" method="post" th:object="${productDto}" enctype="multipart/form-data">
 
+
+        <div class="header">
+
+            <p>Add new product</p>
+
+        </div>
+
         <!-- Name -->
         <div class="form-outline mb-4">
 
@@ -169,7 +176,7 @@
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Add Product</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
 
     </form>
 </div>

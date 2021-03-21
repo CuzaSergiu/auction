@@ -9,6 +9,18 @@
 
 }
 
+/*Add product header*/
+.header {
+    padding: 3px !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+    background: #6db4ff !important;
+    color: white !important;
+    font-size: 30px !important;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px rgb(0 123 255);
+}
+
 select option {
     text-transform: capitalize;
 }
@@ -144,7 +156,7 @@ select option {
 
 /*Welcome message*/
 #welcome {
-    padding-left: 150px;
+    padding-left: 50px;
     padding-bottom: 15px;
     text-transform: uppercase;
     color: white;
