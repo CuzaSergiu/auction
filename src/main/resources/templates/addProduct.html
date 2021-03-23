@@ -22,7 +22,7 @@
 
 <body>
 <!--================ Start Header Menu Area =================-->
-<header class="header_area">
+<header class="header_area" style="top: 0px">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
@@ -65,15 +65,12 @@
 </header>
 <!--================ End Header Menu Area =================-->
 
-<div class="mainContainer">
+<div class="mainContainer" style="margin-top: 150px">
 
     <form th:action="@{/addProduct}" method="post" th:object="${productDto}" enctype="multipart/form-data">
 
-
         <div class="header">
-
             <p>Add new product</p>
-
         </div>
 
         <!-- Name -->
