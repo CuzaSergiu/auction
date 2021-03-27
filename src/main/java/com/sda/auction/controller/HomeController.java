@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Slf4j
@@ -60,7 +63,7 @@ public class HomeController {
 
     @GetMapping("/viewProduct/{productId}")
     public String getViewProduct(Model model, @PathVariable(value = "productId") String productId,
-                                 Authentication authentication) {
+                                 Authentication authentication) throws ParseException {
         if (genericValidator.isNotPositiveInteger(productId)) {
             return "redirect:/home";
         }
@@ -69,8 +72,12 @@ public class HomeController {
             return "redirect:/home";
         }
         ProductDto productDto = optionalProductDto.get();
+
         model.addAttribute("product", productDto);
         model.addAttribute("bidDto", new BidDto());
+
+        String endBiddingTime = optionalProductDto.get().getEndBiddingTime();
+        model.addAttribute("endDate", new SimpleDateFormat("dd-MM-yyyy hh:mm").parse(endBiddingTime));
 
         UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
         model.addAttribute("userHeaderDto", userHeaderDto);

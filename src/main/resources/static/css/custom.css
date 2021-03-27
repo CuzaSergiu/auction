@@ -194,3 +194,25 @@ select option {
 #myBtn:hover {
     background-color: #555;
 }
+
+/*//TODO make css for
+      */
+/* Countdown timer for products */
+#clock {
+    font-size: 15px;
+    color: #6b5855;
+    padding: 0px !important;
+    margin-left: 4px;
+
+}
+
+#clockTimers {
+    font-size: 15px;
+    color: #6b5855;
+    display: contents;
+    padding-left: 5px;
+}
+
+.time-left{
+    display: flex;
+}

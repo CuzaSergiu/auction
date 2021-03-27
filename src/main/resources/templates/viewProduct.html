@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/aroma-template/css/style.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
 
+
 </head>
 <body>
 <!--================ Start Header Menu Area =================-->
@@ -88,6 +89,12 @@
                             <span th:text="': '+${product.endBiddingTime}"></span>
                         </a></li>
 
+
+                        <li><a class="time-left" href="#"><span>Time left</span>
+                            <div id="clock" class="countdown pt-4"></div>
+                        </a></li>
+
+
                         <li><a href="#"><span>Your maximum bid</span>
                             <span th:text="': $'+${product.userMaximumBid}"></span>
                         </a></li>
@@ -129,6 +136,23 @@
         </div>
     </div>
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="/js/jquery.countdown.js"></script>
+
+<script th:inline="javascript">
+    var endDate = [[${#calendars.format(endDate,'yyyy/MM/dd hh:mm')}]];
+
+    $('#clock').countdown(endDate).on('update.countdown', function (event) {
+        var $this = $(this).html(event.strftime(''
+            + ': <span id="clockTimers" class="h1 font-weight-bold">%D</span> Day%!d'
+            + ' <span id="clockTimers" class="h1 font-weight-bold">%H</span> Hr'
+            + ' <span id="clockTimers" class="h1 font-weight-bold">%M</span> Min'
+            + ' <span id="clockTimers" class="h1 font-weight-bold">%S</span> Sec'));
+    });
+</script>
 
 </body>
 
