@@ -19,8 +19,9 @@ public class SchedulerConfig {
         this.bidService = bidService;
     }
 
+    // will search for a winner every 5 seconds
     @Scheduled(fixedDelay = 5000)
     public void regularJob() {
-        bidService.assignWinners();
+        bidService.assignWinners(); // will assign the winner with highest bid
     }
 }

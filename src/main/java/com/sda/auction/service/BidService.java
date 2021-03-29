@@ -64,7 +64,7 @@ public class BidService {
 
     // == private methods ==
     private User getUser(String userEmail) {
-        // we search the user only if we find the product
+        // we search for the user
         Optional<User> optionalUser = userRepository.findByEmail(userEmail);
         if (!optionalUser.isPresent()) {
             throw new IllegalArgumentException("User email does not exist!");
@@ -73,7 +73,7 @@ public class BidService {
     }
 
     private Product getProduct(String productId) {
-        // we search for the product first
+        // we search for the product
         Optional<Product> optionalProduct = productRepository.findById(Integer.valueOf(productId));
         if (!optionalProduct.isPresent()) {
             throw new IllegalArgumentException("Invalid product ID");

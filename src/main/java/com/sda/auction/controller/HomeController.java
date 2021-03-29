@@ -86,6 +86,7 @@ public class HomeController {
         return "viewProduct";
     }
 
+    // this method returns a list of product or products we searched for
     @GetMapping("/search")
     public String searchProduct(Model model, @Param("keyword") String keyword, Authentication authentication) {
 
