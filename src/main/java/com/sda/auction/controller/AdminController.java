@@ -24,6 +24,8 @@ public class AdminController {
     private final ProductDtoValidator productDtoValidator;
     private final ProductService productService;
     private final UserService userService;
+    private static final String PRODUCT_DTO = "productDto";
+    private static final String USER_HEADER_DTO = "userHeaderDto";
 
     // == constructor ==
     @Autowired
@@ -38,10 +40,10 @@ public class AdminController {
     @GetMapping("/addProduct")
     public String getAddProduct(Model model, Authentication authentication) {
         log.info("getAddProduct called");
-        model.addAttribute("productDto", new ProductDto());
+        model.addAttribute(PRODUCT_DTO, new ProductDto());
 
         UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
-        model.addAttribute("userHeaderDto", userHeaderDto);
+        model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
         return "addProduct";
     }
@@ -55,9 +57,9 @@ public class AdminController {
 
         if (bindingResult.hasErrors()) {
             UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
-            model.addAttribute("userHeaderDto", userHeaderDto);
+            model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
-            model.addAttribute("productDto", productDto);
+            model.addAttribute(PRODUCT_DTO, productDto);
             return "addProduct";
         }
         log.info("Product added");

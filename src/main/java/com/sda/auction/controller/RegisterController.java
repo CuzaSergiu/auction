@@ -18,6 +18,7 @@ public class RegisterController {
     // == fields ==
     private final UserService userService;
     private final UserDtoValidator userDtoValidator;
+    private static final String USER_DTO = "userDto";
 
     // == constructor ==
     @Autowired
@@ -31,7 +32,7 @@ public class RegisterController {
     // Model - we keep data inside ( Model View Controller contains Model)
     public String getRegisterPage(Model model) {
         log.info("getRegisterPage called");
-        model.addAttribute("userDto", new UserDto());
+        model.addAttribute(USER_DTO, new UserDto());
 
         return "register";
     }
@@ -39,7 +40,7 @@ public class RegisterController {
     @GetMapping("/login")
     public String getLoginPage(Model model, UserDto userDto) {
         log.info("getLoginPage called");
-        model.addAttribute("userDto", userDto);
+        model.addAttribute(USER_DTO, userDto);
         return "login";
     }
 
@@ -49,7 +50,7 @@ public class RegisterController {
         log.info("postRegisterPage called");
         userDtoValidator.validate(userDto, bindingResult); // will validate the userDto
         if (bindingResult.hasErrors()) {
-            model.addAttribute("userDto", userDto); // the old data will remain
+            model.addAttribute(USER_DTO, userDto); // the old data will remain
             return "register"; // if it has error we return to register page
         }
         log.info("User registered successfully");

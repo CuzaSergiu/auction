@@ -28,12 +28,15 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
+
     // == fields ==
     private final ProductService productService;
     private final GenericValidator genericValidator;
     private final BidValidator bidValidator;
     private final BidService bidService;
     private final UserService userService;
+    private static final String USER_HEADER_DTO = "userHeaderDto";
+    private static final String REDIRECT_HOME = "redirect:/home";
 
     // == constructor ==
     @Autowired
@@ -47,6 +50,7 @@ public class HomeController {
     }
 
     // == mapping methods ==
+    // Home Page
     @GetMapping("/home")
     public String getHomePage(Model model, Authentication authentication) {
         log.info("getHomePage called");
@@ -55,20 +59,21 @@ public class HomeController {
         model.addAttribute("productDtoList", productDtoList);
 
         UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
-        model.addAttribute("userHeaderDto", userHeaderDto);
+        model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
         return "home";
     }
 
+    // Product Page
     @GetMapping("/viewProduct/{productId}")
     public String getViewProduct(Model model, @PathVariable(value = "productId") String productId,
                                  Authentication authentication) throws ParseException {
         if (genericValidator.isNotPositiveInteger(productId)) {
-            return "redirect:/home";
+            return REDIRECT_HOME;
         }
         Optional<ProductDto> optionalProductDto = productService.getProductDtoBy(productId, authentication.getName());
         if (!optionalProductDto.isPresent()) {
-            return "redirect:/home";
+            return REDIRECT_HOME;
         }
         ProductDto productDto = optionalProductDto.get();
 
@@ -79,13 +84,13 @@ public class HomeController {
         model.addAttribute("endDate", new SimpleDateFormat("dd-MM-yyyy hh:mm").parse(endBiddingTime));
 
         UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
-        model.addAttribute("userHeaderDto", userHeaderDto);
+        model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
         log.info("Product viewed");
         return "viewProduct";
     }
 
-    // this method returns a list of product or products we searched for
+    // this method returns a list of product or products we searched for based on a keyword
     @GetMapping("/search")
     public String searchProduct(Model model, @Param("keyword") String keyword, Authentication authentication) {
 
@@ -94,22 +99,24 @@ public class HomeController {
 
         model.addAttribute("keyword", keyword);
         model.addAttribute("searchResult", searchedProductDtoList);
-        model.addAttribute("userHeaderDto", userHeaderDto);
+        model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
         log.info("searchProduct called");
         return "searchResult";
     }
 
+    // this method will post a bid on a product
     @PostMapping("/viewProduct/{productId}")
     public String postBid(Model model, @PathVariable(value = "productId") String productId,
                           BidDto bidDto, BindingResult bindingResult, Authentication authentication) {
         String loggedUserEmail = authentication.getName();
         bidValidator.validate(productId, bidDto, bindingResult);
         Optional<ProductDto> optionalProductDto = productService.getProductDtoBy(productId, authentication.getName());
+
         if (bindingResult.hasErrors()) {
 
             UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
-            model.addAttribute("userHeaderDto", userHeaderDto);
+            model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
             model.addAttribute("bidDto", bidDto);
             model.addAttribute("product", optionalProductDto.get());
@@ -117,6 +124,6 @@ public class HomeController {
         }
         log.info("Bid placed");
         bidService.placeBid(bidDto, productId, loggedUserEmail);
-        return "redirect:/home";
+        return REDIRECT_HOME;
     }
 }
