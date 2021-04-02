@@ -5,7 +5,7 @@ and participants can register and bid for each item.
 
 ### Backend technologies :
 
-###### Java, Spring MVC, Spring Security, Spring boot, Spring Data Jpa, Maven
+###### Java, Spring Security, Spring boot, Spring Data Jpa, Maven
 
 ### Frontend technologies :
 
