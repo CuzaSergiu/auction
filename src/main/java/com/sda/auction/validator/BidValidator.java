@@ -17,6 +17,8 @@ public class BidValidator {
 
     // == fields ==
     private final ProductRepository productRepository;
+    private static final String BID_DTO = "bidDto";
+    private static final String VALUE = "value";
 
     // == constructor ==
     @Autowired
@@ -28,7 +30,7 @@ public class BidValidator {
     public void validate(String productId, BidDto bidDto, BindingResult bindingResult) {
         Optional<Product> optionalProduct = productRepository.findById(Integer.valueOf(productId));
         if (!optionalProduct.isPresent()) {
-            bindingResult.addError(new FieldError("bidDto", "value", "Invalid product Id"));
+            bindingResult.addError(new FieldError(BID_DTO, VALUE, "Invalid product Id"));
             return;
         }
 
@@ -41,7 +43,7 @@ public class BidValidator {
 
         // if the user input not number will throw this error
         if (isBidValueNotNumber(bidDto)) {
-            bindingResult.addError(new FieldError("bidDto", "value", "This field should be a number."));
+            bindingResult.addError(new FieldError(BID_DTO, VALUE, "This field should be a number."));
             return;
         }
 
@@ -68,7 +70,7 @@ public class BidValidator {
 
         }
         if (isError) {
-            bindingResult.addError(new FieldError("bidDto", "value", errorMessage));
+            bindingResult.addError(new FieldError(BID_DTO, VALUE, errorMessage));
         }
     }
 

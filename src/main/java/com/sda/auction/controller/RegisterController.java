@@ -29,7 +29,6 @@ public class RegisterController {
 
     // == mapping methods ==
     @GetMapping("/register")
-    // Model - we keep data inside ( Model View Controller contains Model)
     public String getRegisterPage(Model model) {
         log.info("getRegisterPage called");
         model.addAttribute(USER_DTO, new UserDto());

@@ -12,6 +12,9 @@ import java.time.format.DateTimeParseException;
 @Service
 public class ProductDtoValidator {
 
+    // == fields ==
+    private static final String PRODUCT_DTO = "productDto";
+
     // will validate data in controller
     // == public methods ==
     public void validate(ProductDto productDto, BindingResult bindingResult) {
@@ -34,14 +37,14 @@ public class ProductDtoValidator {
         try {
             ProductCategory.valueOf(category);
         } catch (IllegalArgumentException exception) {
-            bindingResult.addError(new FieldError("productDto", "category", "Wrong category."));
+            bindingResult.addError(new FieldError(PRODUCT_DTO, "category", "Wrong category."));
         }
     }
 
     private void validateDescription(String description, BindingResult bindingResult) {
         if (description.isEmpty() || description.length() < 10) {
             bindingResult.addError(
-                    new FieldError("productDto", "description", "Description is too short. Should contain at least 10 characters!"));
+                    new FieldError(PRODUCT_DTO, "description", "Description is too short. Should contain at least 10 characters!"));
         }
     }
 
@@ -49,7 +52,7 @@ public class ProductDtoValidator {
     private void validateName(String name, BindingResult bindingResult) {
         if (name.isEmpty()) {
             bindingResult.addError(
-                    new FieldError("productDto", "name", "Name cannot be empty."));
+                    new FieldError(PRODUCT_DTO, "name", "Name cannot be empty."));
         }
     }
 
@@ -66,10 +69,10 @@ public class ProductDtoValidator {
         try {
             Integer fieldValueAsInteger = Integer.parseInt(fieldValue);
             if (fieldValueAsInteger <= 0) {
-                bindingResult.addError(new FieldError("productDto", fieldName, "This field should be positive."));
+                bindingResult.addError(new FieldError(PRODUCT_DTO, fieldName, "This field should be positive."));
             }
         } catch (NumberFormatException numberFormatException) {
-            bindingResult.addError(new FieldError("productDto", fieldName, "This field should be a number."));
+            bindingResult.addError(new FieldError(PRODUCT_DTO, fieldName, "This field should be a number."));
         }
     }
 
@@ -85,7 +88,7 @@ public class ProductDtoValidator {
         try {
             LocalDateTime.parse(fieldValue);
         } catch (DateTimeParseException e) {
-            bindingResult.addError(new FieldError("productDto", fieldName, "Invalid Format"));
+            bindingResult.addError(new FieldError(PRODUCT_DTO, fieldName, "Invalid Format"));
             return false;
         }
         return true;
@@ -95,7 +98,7 @@ public class ProductDtoValidator {
         LocalDateTime start = LocalDateTime.parse(startBiddingTime);
         LocalDateTime end = LocalDateTime.parse(endBiddingTime);
         if (end.isBefore(start) || end.isBefore(LocalDateTime.now())) {
-            bindingResult.addError(new FieldError("productDto", "endBiddingTime", "Should be in the future and after bidding time."));
+            bindingResult.addError(new FieldError(PRODUCT_DTO, "endBiddingTime", "Should be in the future and after bidding time."));
         }
     }
 }

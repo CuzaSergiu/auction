@@ -11,7 +11,7 @@
     <groupId>com.sda</groupId>
     <artifactId>auction</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Auction</name>
+    <name>Auction House</name>
     <description>Final project for Java Remote 07 group at SDA</description>
 
     <properties>

@@ -117,7 +117,6 @@ public class HomeController {
 
             UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
             model.addAttribute(USER_HEADER_DTO, userHeaderDto);
-
             model.addAttribute("bidDto", bidDto);
             model.addAttribute("product", optionalProductDto.get());
             return "viewProduct";
