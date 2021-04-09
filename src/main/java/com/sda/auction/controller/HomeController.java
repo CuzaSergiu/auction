@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,7 +80,7 @@ public class HomeController {
         model.addAttribute("bidDto", new BidDto());
 
         String endBiddingTime = optionalProductDto.get().getEndBiddingTime();
-        model.addAttribute("endDate", new SimpleDateFormat("dd-MM-yyyy hh:mm").parse(endBiddingTime));
+        model.addAttribute("endDate", productService.getParse(endBiddingTime));
 
         UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
         model.addAttribute(USER_HEADER_DTO, userHeaderDto);
@@ -108,14 +107,19 @@ public class HomeController {
     // this method will post a bid on a product
     @PostMapping("/viewProduct/{productId}")
     public String postBid(Model model, @PathVariable(value = "productId") String productId,
-                          BidDto bidDto, BindingResult bindingResult, Authentication authentication) {
+                          BidDto bidDto, BindingResult bindingResult, Authentication authentication)
+            throws ParseException {
+
         String loggedUserEmail = authentication.getName();
         bidValidator.validate(productId, bidDto, bindingResult);
+
         Optional<ProductDto> optionalProductDto = productService.getProductDtoBy(productId, authentication.getName());
+        UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
+        String endBiddingTime = optionalProductDto.get().getEndBiddingTime();
 
         if (bindingResult.hasErrors()) {
 
-            UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
+            model.addAttribute("endDate", productService.getParse(endBiddingTime));
             model.addAttribute(USER_HEADER_DTO, userHeaderDto);
             model.addAttribute("bidDto", bidDto);
             model.addAttribute("product", optionalProductDto.get());
