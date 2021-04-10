@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer>, PagingAndSortingRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer>,
+        PagingAndSortingRepository<Product, Integer> {
 
     @Query("select p from Product p where :now between p.startBiddingTime and p.endBiddingTime")
         // gives all the products which are in between start and end bidding time
@@ -31,13 +32,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer>, Pagi
         // will search for the product based on the name
     List<Product> search(String keyword);
 
-    @Query("select distinct b.product from Bid b where :authenticatedUserEmail = b.user.email and :now between b.product.startBiddingTime and b.product.endBiddingTime")
+    @Query("select distinct b.product from Bid b where :authenticatedUserEmail = b.user.email " +
+            "and :now between b.product.startBiddingTime and b.product.endBiddingTime")
     List<Product> findAllActiveByBidder(@Param("authenticatedUserEmail") String authenticatedUserEmail,
                                         @Param("now") LocalDateTime now);
 
-    @Query("select p from Product p where :authenticatedUserEmail = p.winner.email and :now > p.endBiddingTime ")
+    @Query("select p from Product p where :authenticatedUserEmail = p.winner.email " +
+            "and :now > p.endBiddingTime ")
     List<Product> findAllExpiredAndAssigned(@Param("authenticatedUserEmail") String authenticatedUserEmail,
                                             @Param("now") LocalDateTime now);
-
-
 }

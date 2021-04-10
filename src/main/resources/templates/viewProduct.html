@@ -88,11 +88,9 @@
                             <span th:text="': '+${product.endBiddingTime}"></span>
                         </a></li>
 
-
                         <li><a class="time-left" href="#"><span>Time left</span>
                             <div id="clock" class="countdown pt-4"></div>
                         </a></li>
-
 
                         <li><a href="#"><span>Your maximum bid</span>
                             <span th:text="': $'+${product.userMaximumBid}"></span>
@@ -104,10 +102,6 @@
 
                     </ul>
                     <p class="description-box" th:text="${product.description}"></p>
-
-                    <!--                    <p class="error-message"-->
-                    <!--                       th:each="error: ${#fields.errors('generic')}"-->
-                    <!--                       th:text="${error}"></p>-->
 
                     <div class="product_count"
                          th:if="${product.userMaximumBid != product.currentPrice && !product.winnerAssigned}">
@@ -121,10 +115,8 @@
                             <p class="error-message-product"
                                th:each="error: ${#fields.errors('value')}"
                                th:text="${error}"></p>
-
                         </form>
                     </div>
-
                     <div class="product_count"
                          th:if="${product.userMaximumBid == product.currentPrice && !product.winnerAssigned}">
                         <p>You are currently winning the auction for this product !!!</p>

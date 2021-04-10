@@ -27,7 +27,8 @@ public class ProductService {
 
     // == constructor ==
     @Autowired
-    public ProductService(ProductRepository productRepository, ProductMapper productMapper, UserRepository userRepository) {
+    public ProductService(ProductRepository productRepository, ProductMapper productMapper,
+                          UserRepository userRepository) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
         this.userRepository = userRepository;
@@ -40,23 +41,14 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public List<ProductDto> getProductDtoList(String authenticatedUserEmail) {
-        List<Product> productList = productRepository.findAll(); // search for all the products in our repository
-        return productMapper.map(productList, authenticatedUserEmail);
-    }
-
     public List<ProductDto> getActiveProductDtoList(String authenticatedUserEmail) {
         List<Product> productList = productRepository.findAllActive(LocalDateTime.now());
         return productMapper.map(productList, authenticatedUserEmail);
     }
 
-    public List<ProductDto> getProductDtoListByBidder(String authenticatedUserEmail) {
-        List<Product> productList = productRepository.findAllByBidder(authenticatedUserEmail);
-        return productMapper.map(productList, authenticatedUserEmail);
-    }
-
     public Optional<ProductDto> getProductDtoBy(String productId, String authenticatedUserEmail) {
-        Optional<Product> optionalProduct = productRepository.findById(Integer.parseInt(productId)); // search product by id
+        // search product by id
+        Optional<Product> optionalProduct = productRepository.findById(Integer.parseInt(productId));
         // if optionalProduct is not present we return an empty container
         if (!optionalProduct.isPresent()) {
             return Optional.empty();
@@ -84,6 +76,15 @@ public class ProductService {
         return new SimpleDateFormat("dd-MM-yyyy hh:mm").parse(endBiddingTime);
     }
 
+    public List<ProductDto> getProductDtoList(String authenticatedUserEmail) {
+        List<Product> productList = productRepository.findAll(); // search for all the products in our repository
+        return productMapper.map(productList, authenticatedUserEmail);
+    }
+
+    public List<ProductDto> getProductDtoListByBidder(String authenticatedUserEmail) {
+        List<Product> productList = productRepository.findAllByBidder(authenticatedUserEmail);
+        return productMapper.map(productList, authenticatedUserEmail);
+    }
 
     // == private methods ==
     private void assignSeller(String loggedUserEmail, Product product) {

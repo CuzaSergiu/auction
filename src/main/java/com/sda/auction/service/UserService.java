@@ -26,7 +26,8 @@ public class UserService {
 
     // == constructor ==
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, UserMapper userMapper, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository,
+                       UserMapper userMapper, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.userMapper = userMapper;
@@ -68,6 +69,4 @@ public class UserService {
     private void encodePasswordFor(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
     }
-
-
 }
