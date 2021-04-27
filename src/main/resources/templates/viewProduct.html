@@ -73,6 +73,11 @@
                 <div class="s_product_text">
                     <h3 th:text="${product.name}"></h3>
                     <h2 th:text="'Current price $' + ${product.currentPrice}"></h2>
+
+                    <button>
+                        <form th:action="@{/deleteProduct}" method="post">Delete product</form>
+                    </button>
+
                     <ul class="list">
 
                         <li><a class="active" href="#">
@@ -101,6 +106,7 @@
                         </a></li>
 
                     </ul>
+
                     <p class="description-box" th:text="${product.description}"></p>
 
                     <div class="product_count"

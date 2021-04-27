@@ -7,6 +7,7 @@ import com.sda.auction.model.User;
 import com.sda.auction.repository.ProductRepository;
 import com.sda.auction.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -40,6 +42,15 @@ public class ProductService {
         assignSeller(loggedUserEmail, product);
         productRepository.save(product);
     }
+
+    //todo - deleteProduct
+    public void deleteProduct(Integer id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("No product found with id " + id));
+        productRepository.delete(product);
+    }
+
+    //todo - updateProduct
 
     public List<ProductDto> getActiveProductDtoList(String authenticatedUserEmail) {
         List<Product> productList = productRepository.findAllActive(LocalDateTime.now());

@@ -11,9 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -46,6 +44,18 @@ public class AdminController {
         model.addAttribute(USER_HEADER_DTO, userHeaderDto);
 
         return "addProduct";
+    }
+
+    @DeleteMapping("/deleteProduct")
+    public String deleteById(Model model, Authentication authentication, Integer id) {
+
+        UserHeaderDto userHeaderDto = userService.getUserHeaderDto(authentication.getName());
+        model.addAttribute(USER_HEADER_DTO, userHeaderDto);
+
+        productService.deleteProduct(id);
+        log.info("Product deleted");
+
+        return "redirect:/home";
     }
 
     @PostMapping("/addProduct")
